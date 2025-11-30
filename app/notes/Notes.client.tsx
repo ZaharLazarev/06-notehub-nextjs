@@ -10,7 +10,7 @@ import Pagination from "@/components/Pagination/Pagination";
 import { useDebouncedCallback } from "use-debounce";
 import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 export default function NoteDetailsClient() {
   const [page, setPage] = useState(1);
@@ -20,7 +20,7 @@ export default function NoteDetailsClient() {
   const { data, isLoading } = useQuery({
     queryKey: ["notes", page, query],
     queryFn: () => fetchNotes(page, query),
-    // placeholderData: keepPreviousData,
+    placeholderData: keepPreviousData,
     refetchOnMount: false,
   });
 

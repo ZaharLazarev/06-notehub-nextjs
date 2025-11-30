@@ -7,7 +7,10 @@ import {
 import NoteDetailsClient from "./Notes.client";
 
 interface NotesProps {
-  params: Promise<{ page: number; query: string }>;
+  params: {
+    page: number;
+    query: string;
+  };
 }
 
 export default async function Notes({ params }: NotesProps) {
