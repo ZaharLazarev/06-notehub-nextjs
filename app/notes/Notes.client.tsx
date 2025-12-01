@@ -12,9 +12,17 @@ import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
-export default function NotesClient() {
-  const [page, setPage] = useState(1);
-  const [query, setNewQuery] = useState("");
+interface NotesClientProps {
+  paramPage: number;
+  paramQuery: string;
+}
+
+export default function NotesClient({
+  paramPage,
+  paramQuery,
+}: NotesClientProps) {
+  const [page, setPage] = useState(paramPage);
+  const [query, setNewQuery] = useState(paramQuery);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isLoading } = useQuery({
