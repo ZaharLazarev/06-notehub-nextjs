@@ -7,14 +7,15 @@ import {
 import NotesClient from "./Notes.client";
 
 interface NotesProps {
-  params: {
+  searchParams: {
     page: number;
     query: string;
   };
 }
 
-export default async function Notes({ params }: NotesProps) {
-  const page = params.page;
+export default async function Notes({ searchParams }: NotesProps) {
+  const params = await searchParams;
+  const page = params.page ?? 1;
   const query = params.query ?? "";
 
   const queryClient = new QueryClient();
